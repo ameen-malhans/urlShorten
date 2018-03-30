@@ -3,8 +3,8 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.agilemaple</groupId>
-	<artifactId>droolProject</artifactId>
-	<name>droolProject</name>
+	<artifactId>urlShorten</artifactId>
+	<name>urlShorten</name>
 	<packaging>war</packaging>
 	<version>1.0.0-BUILD-SNAPSHOT</version>
 	<properties>
@@ -207,12 +207,12 @@
 		</dependency>
 		
 		<!-- jGooGl  -->
-		<dependency>
-			<groupId>pl.project13.jgoogl</groupId>
-			<artifactId>jgoogl</artifactId>
-			<version>1.0</version>
-		</dependency>
-
+<!-- https://mvnrepository.com/artifact/pl.project13/jgoogl -->
+<dependency>
+    <groupId>pl.project13</groupId>
+    <artifactId>jgoogl</artifactId>
+    <version>1.0</version>
+</dependency>
 		<!-- Test -->
 		<dependency>
 			<groupId>junit</groupId>
@@ -231,7 +231,14 @@
 			<version>${org.springframework-version}</version>
 		</dependency>
 
+		<dependency>
+			<groupId>com.google.code.findbugs</groupId>
+			<artifactId>jsr305</artifactId>
+			<version>2.0.1</version>
+		</dependency>
 	</dependencies>
+	
+	
     <build>
     	<testResources>
 			<testResource>
