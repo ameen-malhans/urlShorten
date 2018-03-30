@@ -20,6 +20,7 @@ import com.google.gson.GsonBuilder;
 import com.ning.http.client.AsyncHttpClient;
 import com.ning.http.client.AsyncHttpClient.BoundRequestBuilder;
 
+import pl.project13.jgoogl.exceptions.InvalidGooGlUrlException;
 import pl.project13.jgoogl.gson.GooGlStatusDeserializer;
 import pl.project13.jgoogl.gson.ISO8601DateDeserializer;
 import pl.project13.jgoogl.response.v1.enums.GooGlStatus;
@@ -44,8 +45,8 @@ public class RequestBuilder {
   private Map<String, String> params     = com.google.common.collect.Maps.newHashMap();
   private Gson gson;
 
-  public RequestBuilder(AsyncHttpClient asyncHttpClient) {
-    this.asyncHttpClient = asyncHttpClient;
+  public RequestBuilder() {
+    this.asyncHttpClient = new AsyncHttpClient();
     this.gson = RequestBuilder.get();
   }
 
@@ -155,5 +156,12 @@ public class RequestBuilder {
 	    gsonBuilder.registerTypeAdapter(Date.class, new ISO8601DateDeserializer());
 
 	    return gsonBuilder.create();
+	  }
+  
+  public static boolean throwIfNotGooGlUrl(String url) {
+	    if (!(url.startsWith("goo.gl/") || url.startsWith("https://www.goo.gl/") || url.startsWith("https://goo.gl/"))) {
+	      return Boolean.TRUE;
+	    }
+	    return Boolean.FALSE;
 	  }
 }
