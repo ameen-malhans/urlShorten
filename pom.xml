@@ -53,31 +53,7 @@
 			</exclusions>
 		</dependency>
 		
-		<!-- Hibernate -->
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-core</artifactId>
-			<version>${hibernate.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-entitymanager</artifactId>
-			<version>${hibernate.version}</version>
-		</dependency>
 		
-		<!-- Hibernate Validator -->
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-validator</artifactId>
-           <version>4.2.0.Final</version>
-        </dependency>
-		
-		<!-- Mysql -->
-		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<version>5.1.36</version>
-		</dependency>
 		
 		<!-- POI -->
 		<dependency>
@@ -230,13 +206,13 @@
 			<version>1.0.0.GA</version>
 		</dependency>
 		
-		<!-- Drools  -->
-	<dependency>
-		<groupId>org.drools</groupId>
-		<artifactId>drools-spring</artifactId>
-		<version>5.4.0.Final</version>
-	</dependency>
-	
+		<!-- jGooGl  -->
+		<dependency>
+			<groupId>pl.project13.jgoogl</groupId>
+			<artifactId>jgoogl</artifactId>
+			<version>1.0</version>
+		</dependency>
+
 		<!-- Test -->
 		<dependency>
 			<groupId>junit</groupId>
