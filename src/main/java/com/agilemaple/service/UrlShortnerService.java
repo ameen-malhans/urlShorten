@@ -2,6 +2,7 @@ package com.agilemaple.service;
 
 import org.springframework.stereotype.Service;
 
+import com.agilemaple.model.UrlAnalytic;
 import com.agilemaple.model.UrlShortner;
 
 import java.util.Optional;
@@ -20,6 +21,6 @@ public interface UrlShortnerService {
 	 Optional<UrlShortner> findByOriginalUrl(String urlName);
 	 String shortenUrlByDb(String longUrl);
 	 String getUrlByDb(String shortUrl);
-	 String urlAnalyticsByDb(String shortUrl);
+	 Optional<UrlAnalytic> urlAnalyticsByDb(String shortUrl);
 
 }

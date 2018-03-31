@@ -13,13 +13,24 @@ public class UrlShortner implements Serializable {
 	@Id
 	@Column(name="id")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-		private Long id;
+	private Long id;
 	
 	@Column(name="original_url")
 	private String originalUrl;
 	
 	@Column(name="created_on")
 	private Timestamp createdOn;
+	
+	@OneToOne(fetch = FetchType.EAGER, mappedBy="urlShortner")
+	private UrlAnalytic urlAnalytic;
+
+	public UrlAnalytic getUrlAnalytic() {
+		return urlAnalytic;
+	}
+
+	public void setUrlAnalytic(UrlAnalytic urlAnalytic) {
+		this.urlAnalytic = urlAnalytic;
+	}
 
 	public Long getId() {
 		return id;

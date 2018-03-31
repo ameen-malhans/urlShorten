@@ -1,27 +1,33 @@
 package com.agilemaple.service.implementation;
 
-import com.agilemaple.dao.UrlShortnerDAO;
-import com.agilemaple.model.UrlShortner;
-import com.agilemaple.service.UrlShortnerService;
-import com.agilemaple.utils.Base62;
-import com.agilemaple.utils.RequestBuilder;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Transactional;
-
 import java.io.IOException;
 import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutionException;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.agilemaple.dao.UrlAnalyticDAO;
+import com.agilemaple.dao.UrlShortnerDAO;
+import com.agilemaple.model.UrlAnalytic;
+import com.agilemaple.model.UrlShortner;
+import com.agilemaple.service.UrlShortnerService;
+import com.agilemaple.utils.Base62;
+import com.agilemaple.utils.RequestBuilder;
+
 @Component
 public class UrlShortenServiceImpl implements UrlShortnerService {
 
 	@Autowired
 	private UrlShortnerDAO urlShortnerDAO;
+	
+	@Autowired
+	private UrlAnalyticDAO urlAnalyticDAO;
 
 	private Map<String, String> urlByIdMap = new ConcurrentHashMap<>();
 	private Map<String, Integer> countByIdMap = new ConcurrentHashMap<>();
@@ -78,7 +84,12 @@ public class UrlShortenServiceImpl implements UrlShortnerService {
 	@Override
 	@Transactional
 	public Long saveUrl(UrlShortner urlShortner) {
-		return this.urlShortnerDAO.saveUrl(urlShortner);
+		long id = this.urlShortnerDAO.saveUrl(urlShortner);
+		UrlAnalytic urlAnalytic =  new UrlAnalytic();
+		urlAnalytic.setCount(0);
+		urlAnalytic.setUrlShortner(urlShortner);
+		urlAnalyticDAO.saveAnalytic(urlAnalytic);
+		return id; 
 	}
 
 	@Override
@@ -117,27 +128,37 @@ public class UrlShortenServiceImpl implements UrlShortnerService {
 	@Transactional
 	public String getUrlByDb(String shortUrl) {
 			// Resolve a shortened URL to the initial ID.
-		    String str = shortUrl.replace("/", "");
-			long id = Base62.toBase10(str);
+			long id = Base62.toBase10(shortUrl);
 			// Now find your database-record with the ID found
 			Optional<UrlShortner> urlShortener = findeById(id);
 
 			if(urlShortener.isPresent()) {
-				return urlShortener.get().getOriginalUrl();
+				String originalUrl = urlShortener.get().getOriginalUrl();
+				UrlAnalytic urlAnalytic = urlShortener.get().getUrlAnalytic();
+				urlAnalyticDAO.updateAnalytic(urlAnalytic);
+				return originalUrl;
 			}
-		return "";
+		return null;
 	}
 
 
 	@Override
-	public String urlAnalyticsByDb(String shortUrl) {
-
-		return null;
+	@Transactional
+	public Optional<UrlAnalytic> urlAnalyticsByDb(String shortUrl) {
+		// Resolve a shortened URL to the initial ID.
+		long id = Base62.toBase10(shortUrl);
+		// Now find your database-record with the ID found
+		Optional<UrlShortner> urlShortener = findeById(id);
+		if(urlShortener.isPresent()) {
+			return Optional.ofNullable(urlShortener.get().getUrlAnalytic());
+		}
+		
+		return Optional.empty();
 	}
 
 	private String generateURLShorterner(UrlShortner urlShortner) {
 		// Generate shortenedURL via base62 encode.
-		String shortenedURL = "/" + Base62.toBase62(urlShortner.getId().intValue());
+		String shortenedURL = Base62.toBase62(urlShortner.getId().intValue());
 		return shortenedURL;
 	}
 

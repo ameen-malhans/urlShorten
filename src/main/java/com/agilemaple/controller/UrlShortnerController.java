@@ -4,6 +4,7 @@ import com.agilemaple.dto.Analytics;
 import com.agilemaple.dto.ShortenUrlRequest;
 import com.agilemaple.dto.ShortenUrlResponse;
 import com.agilemaple.exception.ResponseFailureException;
+import com.agilemaple.model.UrlAnalytic;
 import com.agilemaple.service.UrlShortnerService;
 import com.agilemaple.utils.RequestBuilder;
 import com.google.common.hash.Hashing;
@@ -18,6 +19,7 @@ import javax.validation.Valid;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/api") 
@@ -109,4 +111,49 @@ public class UrlShortnerController {
         }
         return valid;
     }
+
+	@RequestMapping(value = "db/shortenurl", method = RequestMethod.POST)
+	public @ResponseBody ShortenUrlResponse getshortenUrlByDb(HttpServletRequest httpRequest, @Valid @RequestBody ShortenUrlRequest request) {
+		String url = request.getUrl();
+		if (!isUrlValid(url)) {
+			throw new InvalidGooGlUrlException("It seems that the url: '" + url + "' is invalid...");
+		}
+		String shortUrl = urlShortnerService.shortenUrlByDb(url);
+		String requestUrl = httpRequest.getRequestURL().toString();
+		String prefix = requestUrl.substring(0, requestUrl.indexOf(httpRequest.getRequestURI(), "http://".length()));
+		ShortenUrlResponse response = new ShortenUrlResponse();
+		response.setUrl(prefix + "/api/db/" + shortUrl);
+		return response;
+	}
+	
+	@RequestMapping(value = "db/analytics", method = RequestMethod.POST)
+	public @ResponseBody Analytics analyticsByDb(HttpServletRequest httpRequest, @Valid @RequestBody ShortenUrlRequest request) {
+		Analytics analytics = new Analytics();
+		String shortUrl = request.getUrl();
+		if(shortUrl!=null) {
+			String suffixId =  shortUrl.substring(shortUrl.lastIndexOf("/")+1,shortUrl.length());
+			if(suffixId!=null) {
+				Optional<UrlAnalytic> analyticsFromDb = urlShortnerService.urlAnalyticsByDb(suffixId);
+				analytics.setCount(analyticsFromDb.get().getCount());
+			}
+			
+		}
+		return analytics;
+	}
+
+	@RequestMapping(value = "db/{id}", method = RequestMethod.GET)
+	public void redirectToUrlByDb(@PathVariable String id, HttpServletResponse resp) throws Exception {
+		String longUrl = urlShortnerService.getUrlByDb(id);
+		if (longUrl != null) {
+			resp.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1
+			resp.setHeader("Pragma", "no-cache"); // HTTP 1.0
+			resp.setDateHeader("Expires", 0); // Proxies.
+			resp.addHeader("Location", longUrl);
+			resp.setStatus(HttpServletResponse.SC_MOVED_PERMANENTLY);
+		} else {
+			resp.sendError(HttpServletResponse.SC_NOT_FOUND);
+		}
+	}
+
+	
 }

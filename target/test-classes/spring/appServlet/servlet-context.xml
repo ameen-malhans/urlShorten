@@ -79,6 +79,7 @@
 		<beans:property name="annotatedClasses">
 			<beans:list>
 				<beans:value>com.agilemaple.model.UrlShortner</beans:value>
+				<beans:value>com.agilemaple.model.UrlAnalytic</beans:value>
 			</beans:list>
 		</beans:property>
 		<beans:property name="hibernateProperties">
