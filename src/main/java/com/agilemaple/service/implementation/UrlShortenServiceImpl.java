@@ -1,6 +1,8 @@
 package com.agilemaple.service.implementation;
 
 import java.io.IOException;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutionException;
 
 import org.slf4j.Logger;
@@ -13,6 +15,8 @@ import com.agilemaple.service.utils.RequestBuilder;
 @Component
 public class UrlShortenServiceImpl implements UrlShortnerService {
 
+	private Map<String, String> urlByIdMap = new ConcurrentHashMap<>();
+	private Map<String, Integer> countByIdMap = new ConcurrentHashMap<>();
 	
 	RequestBuilder requestBuilder = new RequestBuilder();
 
@@ -39,6 +43,28 @@ public class UrlShortenServiceImpl implements UrlShortnerService {
 			log.error("Exception UrlShortenServiceImpl::shortenUrl", e);
 		}
 		return null;
+	}
+
+	@Override
+	public String findUrlById(String id) {
+		return urlByIdMap.get(id);
+	}
+	
+	@Override
+	public Integer findCountById(String id) {
+		return countByIdMap.get(id);
+	}
+	
+	@Override
+	public void incrementCount(String id) {
+		Integer count = countByIdMap.get(id);
+		countByIdMap.put(id, ++count);
+	}
+
+	@Override
+	public void storeUrl(String id, String url) {
+		 urlByIdMap.put(id, url);
+		 countByIdMap.put(id, 0);
 	}
 
 }
