@@ -1,30 +1,23 @@
 package com.agilemaple.controller;
 
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.validation.Valid;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-
 import com.agilemaple.dto.Analytics;
 import com.agilemaple.dto.ShortenUrlRequest;
 import com.agilemaple.dto.ShortenUrlResponse;
 import com.agilemaple.exception.ResponseFailureException;
 import com.agilemaple.service.UrlShortnerService;
-import com.agilemaple.service.utils.RequestBuilder;
+import com.agilemaple.utils.RequestBuilder;
 import com.google.common.hash.Hashing;
-
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
 import pl.project13.jgoogl.exceptions.InvalidGooGlUrlException;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.nio.charset.StandardCharsets;
 
 @Controller
 @RequestMapping("/api") 
