@@ -4,17 +4,18 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.agilemaple</groupId>
-	<artifactId>urlShorten</artifactId>
-	<name>urlShorten</name>
+	<artifactId>urlshorten</artifactId>
+	<name>urlshorten</name>
 	<packaging>war</packaging>
 	<version>1.0.0-BUILD-SNAPSHOT</version>
 	<properties>
-		<java-version>9</java-version>
+		<java-version>8</java-version>
 		<org.springframework-version>4.0.3.RELEASE</org.springframework-version>
 		<org.aspectj-version>1.7.4</org.aspectj-version>
 		<org.slf4j-version>1.7.5</org.slf4j-version>
 		<hibernate.version>4.3.5.Final</hibernate.version>
 		<jackson.databind-version>2.2.3</jackson.databind-version>
+	    <docker.image.prefix>mvpjava</docker.image.prefix>
 	</properties>
 	<dependencies>
 		<!-- Spring -->
@@ -305,7 +306,6 @@
 					<mainClass>org.test.int1.Main</mainClass>
 				</configuration>
 			</plugin>
-		</plugins>
 		<finalName>${project.artifactId}</finalName>
 	</build>
 </project>
