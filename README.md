@@ -122,5 +122,5 @@ a) Approach 1: Using google APIs:
   
 
 ### 3) Improvements :
-a) More Exception handling cases can be added.
-b) Docker can be used.
+1) More Exception handling cases can be added.
+2) Docker can be used.
