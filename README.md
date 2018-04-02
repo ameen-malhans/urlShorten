@@ -28,7 +28,7 @@ For example if you enter payment type physicalProduct, you will see output :gene
 5) Enter the URL in the body you want to get shorten and send the request you will get the shorten url in response.
 6) Now hit the shorten Url from step5
 #### For Analytics
-7)From your Postman send POST request to http://localhost:8080/urlshorten/api/{type of approach you want to use}/analytics  where {type of approach you want to use} = google, inmemory , db.
+7) From your Postman send POST request to http://localhost:8080/urlshorten/api/{type of approach you want to use}/analytics  where {type of approach you want to use} = google, inmemory , db.
 8) Enter the Shorten Url you got from Step 5  in the body  and  send the POST request you will get analytics for that website.
     
 ## Explanation
@@ -39,61 +39,61 @@ a) Approach 1: Using google APIs:
    a.1) To shorten the url , From your Postman For shorten send POST request to http://espressoprojector.com/			api/google/shortenurl
    		You will get following response:
    
-							  {
-									 "kind": "urlshortener#url",
-									 "id": "https://goo.gl/5Bk1ch",
-									 "longUrl": "https://beginnersbook.com/2013/12/java-string-indexof-method
-									            -example/"
-							   }
+				  {
+						 "kind": "urlshortener#url",
+						 "id": "https://goo.gl/5Bk1ch",
+						 "longUrl": "https://beginnersbook.com/2013/12/java-string-indexof-method
+						            -example/"
+				   }
 							
 
    a.2) To get analytics,From your Postman For analytics send POST request to http://espressoprojector.com/api/		google/analytics
         You will get following response:
-        
-                               {
-								 "kind": "urlshortener#url",
-								 "id": "https://goo.gl/5Bk1ch",
-								 "longUrl": "https://beginnersbook.com/2013/12/java-string-indexof-method-													example/",
-								 "status": "OK",
-								 "analytics": {
-								  "allTime": {
-								   "shortUrlClicks": "5",
-								   "longUrlClicks": "5"
-								  },
-								  "month": {
-								   "shortUrlClicks": "5",
-								   "longUrlClicks": "5"
-								  },
-								  "week": {
-								   "shortUrlClicks": "5",
-								   "longUrlClicks": "5"
-								  },
-								  "day": {
-								   "shortUrlClicks": "5",
-								   "longUrlClicks": "5"
-								  },
-								  "twoHours": {
-								   "shortUrlClicks": "4",
-								   "longUrlClicks": "4"
-								  }
-								 }
-						      }
-  							
+
+                   {
+					 "kind": "urlshortener#url",
+					 "id": "https://goo.gl/5Bk1ch",
+					 "longUrl": "https://beginnersbook.com/2013/12/java-string-indexof-method-													example/",
+					 "status": "OK",
+					 "analytics": {
+					  "allTime": {
+					   "shortUrlClicks": "5",
+					   "longUrlClicks": "5"
+					  },
+					  "month": {
+					   "shortUrlClicks": "5",
+					   "longUrlClicks": "5"
+					  },
+					  "week": {
+					   "shortUrlClicks": "5",
+					   "longUrlClicks": "5"
+					  },
+					  "day": {
+					   "shortUrlClicks": "5",
+					   "longUrlClicks": "5"
+					  },
+					  "twoHours": {
+					   "shortUrlClicks": "4",
+					   "longUrlClicks": "4"
+					  }
+					 }
+			      }
+				
  b) Approach 2: Using inmemory webservices :
    
    b.1) To shorten the url , From your Postman For shorten send POST request to http://espressoprojector.com/			api/inmemory/shortenurl
 		You will get following response:
-		
-								{
-								"url": "http://espressoprojector.com/api/7e4ae64c"
-								}
+
+				{
+				"url": "http://espressoprojector.com/api/7e4ae64c"
+				}
 							
    b.2) To get analytics,From your Postman For analytics send POST request to http://espressoprojector.com/api/		inmemory/analytics
  		You will get following response:
 
-							{
-                                "count": 3
-                             }
+					{
+                          "count": 3
+                     }
 		
  
  c) Approach 3: Using db webservices means url is firstly stored in database to specific id and then shorten 					service is called and again we store shorten url to get analytics:
@@ -101,17 +101,17 @@ a) Approach 1: Using google APIs:
    	c.1) To shorten the url , From your Postman For shorten send POST request to http://espressoprojector.com/			 api/db/shortenurl
 		 You will get following response:
 
-							{
-                               "url": "http://espressoprojector.com/api/db/g"
-                             }
-							
+					{
+                       "url": "http://espressoprojector.com/api/db/g"
+                     }
+					
    	c.2) To get analytics,From your Postman For analytics send POST request to http://espressoprojector.com/api/		 bd/analytics
  		 You will get following response:
 
-							{
-                                "count": 3
-                             }
-					
+					{
+                          "count": 3
+                     }
+			
 ### 2) The service for task is  :
   
   ### To Run in Live environment
