@@ -1,4 +1,3 @@
-
 # URL Shorten Project
 
 ## About
@@ -24,11 +23,11 @@ For example if you enter payment type physicalProduct, you will see output :gene
 2) Build project using maven "mvn clean install"
 3) Launch Java Application using Tomcat Server by deploying war file
 #### For Shorten URL
-4) From your Postman send POST request to http://localhost:8080/urlshorten/api/{type of approach you want to use}/shortenurl where {type of approach you want to use} = google, inmemory , db.
+4) From your Postman send POST request to http://localhost:8080/urlshorten/api/{type of approach you want to use}/shortenurl where {type of approach you want to use} = google, db.
 5) Enter the URL in the body you want to get shorten and send the request you will get the shorten url in response.
 6) Now hit the shorten Url from step5
 #### For Analytics
-7) From your Postman send POST request to http://localhost:8080/urlshorten/api/{type of approach you want to use}/analytics  where {type of approach you want to use} = google, inmemory , db.
+7) From your Postman send POST request to http://localhost:8080/urlshorten/api/{type of approach you want to use}/analytics  where {type of approach you want to use} = google,  db.
 8) Enter the Shorten Url you got from Step 5  in the body  apending urlshorten before api and  send the POST request you will get analytics for that website.
     
 ## Explanation
@@ -98,10 +97,10 @@ a) Approach 1: Using google APIs:
 ### 2) The service for task is  :
   
   ### To Run in Live environment
-  http://espressoprojector.com/api/{type of approach you want to use}/{task} where {type of approach you want to use} = google, inmemory , db and task = shortenurl ,analytics
+  http://espressoprojector.com/api/{type of approach you want to use}/{task} where {type of approach you want to use} = google, db and task = shortenurl ,analytics
  
   ### To Run Locally
-  http://localhost:8080/urlshorten/api/{type of approach you want to use}/{task} where {type of approach you want to use} = google, inmemory , db and task = shortenurl ,analytics
+  http://localhost:8080/urlshorten/api/{type of approach you want to use}/{task} where {type of approach you want to use} = google, db and task = shortenurl ,analytics
   
 
 ### 3) Improvements :
