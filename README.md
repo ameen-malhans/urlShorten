@@ -40,9 +40,9 @@ a) Approach 1: Using google APIs:
    		You will get following response:
    
 		  {
-				 "kind": "urlshortener#url",
-				 "id": "https://goo.gl/5Bk1ch",
-				 "longUrl": "https://beginnersbook.com/2013/12/java-string-indexof-method-example/"
+			 "kind": "urlshortener#url",
+			 "id": "https://goo.gl/5Bk1ch",
+			 "longUrl": "https://beginnersbook.com/2013/12/java-string-indexof-method-example/"
 		   }
 					
 
@@ -92,7 +92,7 @@ a) Approach 1: Using google APIs:
 
 					{
                                      "count": 3
-                     }
+                                    }
 		
  
  c) Approach 3: Using db webservices means url is firstly stored in database to specific id and then shorten 					service is called and again we store shorten url to get analytics:
@@ -109,7 +109,7 @@ a) Approach 1: Using google APIs:
 
 					{
                                      "count": 3
-                     }
+                                    }
 		
  
 ### 2) The service for task is  :
