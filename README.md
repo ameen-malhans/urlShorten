@@ -12,11 +12,11 @@ For example if you enter payment type physicalProduct, you will see output :gene
 
 ### To Run in Live environment
 #### For Shorten URL
-1) From your Postman For shorten send POST request to http://espressoprojector.com/api/{type of approach you want to use}/shortenurl where {type of approach you want to use} = google, inmemory , db.
+1) From your Postman For shorten send POST request to http://espressoprojector.com/api/{type of approach you want to use}/shortenurl where {type of approach you want to use} = google, db.
 2) Enter the URL in the body you want to get shorten and send the request you will get the shorten url in response.
 3) Hit the shorten url from Step 2.
 #### For Analytics
-3) From your Postman For analytics send POST request to http://espressoprojector.com/api/{type of approach you want to use}/analytics where {type of approach you want to use} = google, inmemory , db.
+3) From your Postman For analytics send POST request to http://espressoprojector.com/api/{type of approach you want to use}/analytics where {type of approach you want to use} = google, db.
 4) Enter the Shorten Url you got from Step 2  in the body  and  send the POST request you will get analytics for that website.
 
 ### To Run Locally
@@ -33,7 +33,7 @@ For example if you enter payment type physicalProduct, you will see output :gene
     
 ## Explanation
 
-### 1) The task has been done in 3 Approaches:
+### 1) The task has been done in 2 Approaches:
 a) Approach 1: Using google APIs:
 
    a.1) To shorten the url , From your Postman For shorten send POST request to http://espressoprojector.com/			api/google/shortenurl
@@ -78,33 +78,16 @@ a) Approach 1: Using google APIs:
 		 }
       }
 				
- b) Approach 2: Using inmemory webservices :
+ b) Approach 2: Using db webservices means url is firstly stored in database to specific id and then shorten 					service is called and again we store shorten url to get analytics:
    
-   b.1) To shorten the url , From your Postman For shorten send POST request to http://espressoprojector.com/			api/inmemory/shortenurl
+   b.1) To shorten the url , From your Postman For shorten send POST request to http://espressoprojector.com/			api/db/shortenurl
 		You will get following response:
 
 				{
 				"url": "http://espressoprojector.com/api/7e4ae64c"
 				}
 							
-   b.2) To get analytics,From your Postman For analytics send POST request to http://espressoprojector.com/api/		inmemory/analytics
- 		You will get following response:
-
-					{
-                                     "count": 3
-                                    }
-		
- 
- c) Approach 3: Using db webservices means url is firstly stored in database to specific id and then shorten 					service is called and again we store shorten url to get analytics:
-   
-   c.1) To shorten the url , From your Postman For shorten send POST request to http://espressoprojector.com/			api/db/shortenurl
-		You will get following response:
-
-				{
-				"url": "http://espressoprojector.com/api/7e4ae64c"
-				}
-							
-   c.2) To get analytics,From your Postman For analytics send POST request to http://espressoprojector.com/api/		db/analytics
+   b.2) To get analytics,From your Postman For analytics send POST request to http://espressoprojector.com/api/		db/analytics
  		You will get following response:
 
 					{

@@ -65,7 +65,7 @@ public class UrlShortnerController {
 	
    
 	
-	@RequestMapping(value = "inmemory/shortenurl", method = RequestMethod.POST)
+/*	@RequestMapping(value = "inmemory/shortenurl", method = RequestMethod.POST)
 	public @ResponseBody ShortenUrlResponse shortenUrlInBuild(HttpServletRequest httpRequest, @Valid @RequestBody ShortenUrlRequest request) {
 		String url = request.getUrl();
 		if (!isUrlValid(url)) {
@@ -109,7 +109,7 @@ public class UrlShortnerController {
 		} else {
 			resp.sendError(HttpServletResponse.SC_NOT_FOUND);
 		}
-	}
+	}*/
 	
     
     private boolean isUrlValid(String url) {
