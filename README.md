@@ -29,7 +29,7 @@ For example if you enter payment type physicalProduct, you will see output :gene
 6) Now hit the shorten Url from step5
 #### For Analytics
 7) From your Postman send POST request to http://localhost:8080/urlshorten/api/{type of approach you want to use}/analytics  where {type of approach you want to use} = google, inmemory , db.
-8) Enter the Shorten Url you got from Step 5  in the body  and  send the POST request you will get analytics for that website.
+8) Enter the Shorten Url you got from Step 5  in the body  apending urlshorten before api and  send the POST request you will get analytics for that website.
     
 ## Explanation
 
