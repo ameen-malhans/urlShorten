@@ -104,8 +104,8 @@ public class UrlShortnerController {
 			resp.setHeader("Pragma", "no-cache"); // HTTP 1.0
 			resp.setDateHeader("Expires", 0); // Proxies.
 			resp.addHeader("Location", url);
-			urlShortnerService.incrementCount(id);
 			resp.setStatus(HttpServletResponse.SC_MOVED_PERMANENTLY);
+			urlShortnerService.incrementCount(id);
 		} else {
 			resp.sendError(HttpServletResponse.SC_NOT_FOUND);
 		}
