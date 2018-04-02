@@ -39,45 +39,44 @@ a) Approach 1: Using google APIs:
    a.1) To shorten the url , From your Postman For shorten send POST request to http://espressoprojector.com/			api/google/shortenurl
    		You will get following response:
    
-				  {
-						 "kind": "urlshortener#url",
-						 "id": "https://goo.gl/5Bk1ch",
-						 "longUrl": "https://beginnersbook.com/2013/12/java-string-indexof-method
-						            -example/"
-				   }
-							
+		  {
+				 "kind": "urlshortener#url",
+				 "id": "https://goo.gl/5Bk1ch",
+				 "longUrl": "https://beginnersbook.com/2013/12/java-string-indexof-method-example/"
+		   }
+					
 
    a.2) To get analytics,From your Postman For analytics send POST request to http://espressoprojector.com/api/		google/analytics
         You will get following response:
 
-                   {
-					 "kind": "urlshortener#url",
-					 "id": "https://goo.gl/5Bk1ch",
-					 "longUrl": "https://beginnersbook.com/2013/12/java-string-indexof-method-													example/",
-					 "status": "OK",
-					 "analytics": {
-					  "allTime": {
-					   "shortUrlClicks": "5",
-					   "longUrlClicks": "5"
-					  },
-					  "month": {
-					   "shortUrlClicks": "5",
-					   "longUrlClicks": "5"
-					  },
-					  "week": {
-					   "shortUrlClicks": "5",
-					   "longUrlClicks": "5"
-					  },
-					  "day": {
-					   "shortUrlClicks": "5",
-					   "longUrlClicks": "5"
-					  },
-					  "twoHours": {
-					   "shortUrlClicks": "4",
-					   "longUrlClicks": "4"
-					  }
-					 }
-			      }
+       {
+		 "kind": "urlshortener#url",
+		 "id": "https://goo.gl/5Bk1ch",
+		 "longUrl": "https://beginnersbook.com/2013/12/java-string-indexof-method-example/",
+		 "status": "OK",
+		 "analytics": {
+		  "allTime": {
+		   "shortUrlClicks": "5",
+		   "longUrlClicks": "5"
+		  },
+		  "month": {
+		   "shortUrlClicks": "5",
+		   "longUrlClicks": "5"
+		  },
+		  "week": {
+		   "shortUrlClicks": "5",
+		   "longUrlClicks": "5"
+		  },
+		  "day": {
+		   "shortUrlClicks": "5",
+		   "longUrlClicks": "5"
+		  },
+		  "twoHours": {
+		   "shortUrlClicks": "4",
+		   "longUrlClicks": "4"
+		  }
+		 }
+      }
 				
  b) Approach 2: Using inmemory webservices :
    
@@ -92,24 +91,24 @@ a) Approach 1: Using google APIs:
  		You will get following response:
 
 					{
-                          "count": 3
+                                     "count": 3
                      }
 		
  
  c) Approach 3: Using db webservices means url is firstly stored in database to specific id and then shorten 					service is called and again we store shorten url to get analytics:
    
-   	c.1) To shorten the url , From your Postman For shorten send POST request to http://espressoprojector.com/			 api/db/shortenurl
-		 You will get following response:
+   	c.1) To shorten the url , From your Postman For shorten send POST request to http://espressoprojector.com/		api/db/shortenurl
+	You will get following response:
 
 					{
-                       "url": "http://espressoprojector.com/api/db/g"
+                              "url": "http://espressoprojector.com/api/db/g"
                      }
 					
-   	c.2) To get analytics,From your Postman For analytics send POST request to http://espressoprojector.com/api/		 bd/analytics
- 		 You will get following response:
+   	c.2) To get analytics,From your Postman For analytics send POST request to http://espressoprojector.com/api/	bd/analytics
+ 	You will get following response:
 
 					{
-                          "count": 3
+                              "count": 3
                      }
 			
 ### 2) The service for task is  :
