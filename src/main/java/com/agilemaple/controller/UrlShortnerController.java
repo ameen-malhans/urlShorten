@@ -94,6 +94,9 @@ public class UrlShortnerController {
 		Integer count = urlShortnerService.findCountById(id);
 		if (url != null && count!=null) {
 			urlShortnerService.incrementCount(id);
+			resp.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1
+			resp.setHeader("Pragma", "no-cache"); // HTTP 1.0
+			resp.setDateHeader("Expires", 0); // Proxies.
 			resp.addHeader("Location", url);
 			resp.setStatus(HttpServletResponse.SC_MOVED_PERMANENTLY);
 		} else {

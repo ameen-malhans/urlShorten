@@ -2,7 +2,7 @@
                 
     
     
-    <wb-module deploy-name="urlShorten">
+    <wb-module deploy-name="urlshorten-1.0.0-BUILD-SNAPSHOT">
                                 
         
         
@@ -23,7 +23,7 @@
         
         
         <property name="java-output-path" value="/urlShorten/target/classes"/>
-        <property name="context-root" value="/"/>
+        <property name="context-root" value="urlshorten"/>
                             
     
     
