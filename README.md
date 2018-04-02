@@ -97,20 +97,21 @@ a) Approach 1: Using google APIs:
  
  c) Approach 3: Using db webservices means url is firstly stored in database to specific id and then shorten 					service is called and again we store shorten url to get analytics:
    
-   	c.1) To shorten the url , From your Postman For shorten send POST request to http://espressoprojector.com/		api/db/shortenurl
-	You will get following response:
+   c.1) To shorten the url , From your Postman For shorten send POST request to http://espressoprojector.com/			api/db/shortenurl
+		You will get following response:
+
+				{
+				"url": "http://espressoprojector.com/api/7e4ae64c"
+				}
+							
+   c.2) To get analytics,From your Postman For analytics send POST request to http://espressoprojector.com/api/		db/analytics
+ 		You will get following response:
 
 					{
-                              "url": "http://espressoprojector.com/api/db/g"
+                                     "count": 3
                      }
-					
-   	c.2) To get analytics,From your Postman For analytics send POST request to http://espressoprojector.com/api/	bd/analytics
- 	You will get following response:
-
-					{
-                              "count": 3
-                     }
-			
+		
+ 
 ### 2) The service for task is  :
   
   ### To Run in Live environment
