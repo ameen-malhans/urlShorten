@@ -35,18 +35,22 @@ For example if you enter payment type physicalProduct, you will see output :gene
 
 ### 1) The task has been done in 3 Approaches:
 a) Approach 1: Using google APIs:
-  
-  a.1) To shorten the url , From your Postman For shorten send POST request to http://espressoprojector.com/api/google/shortenurl
-You will get following response:
+
+   a.1) To shorten the url , From your Postman For shorten send POST request to http://espressoprojector.com/			api/google/shortenurl
+   		You will get following response:
+   
 							  {
 									 "kind": "urlshortener#url",
- 									 "id": "https://goo.gl/5Bk1ch",
- 									 "longUrl": "https://beginnersbook.com/2013/12/java-string-indexof-method										            		example/"
-							  }
+									 "id": "https://goo.gl/5Bk1ch",
+									 "longUrl": "https://beginnersbook.com/2013/12/java-string-indexof-method
+									            -example/"
+							   }
 							
-  a.2)To get analytics,From your Postman For analytics send POST request to http://espressoprojector.com/api/google/analytics
-  You will get following response:
-  							{
+
+   a.2) To get analytics,From your Postman For analytics send POST request to http://espressoprojector.com/api/		google/analytics
+        You will get following response:
+        
+                               {
 								 "kind": "urlshortener#url",
 								 "id": "https://goo.gl/5Bk1ch",
 								 "longUrl": "https://beginnersbook.com/2013/12/java-string-indexof-method-													example/",
@@ -77,33 +81,37 @@ You will get following response:
   							
  b) Approach 2: Using inmemory webservices :
    
-   b.1) To shorten the url , From your Postman For shorten send POST request to http://espressoprojector.com/api/inmemory/shortenurl
-You will get following response:
-						        {
-   									 "url": "http://espressoprojector.com/api/7e4ae64c"
+   b.1) To shorten the url , From your Postman For shorten send POST request to http://espressoprojector.com/			api/inmemory/shortenurl
+		You will get following response:
+		
+								{
+								"url": "http://espressoprojector.com/api/7e4ae64c"
 								}
 							
-   b.2)To get analytics,From your Postman For analytics send POST request to http://espressoprojector.com/api/inmemory/analytics
- You will get following response:
-					        {
- 								   "count": 3
-							}
-  										
- 								
+   b.2) To get analytics,From your Postman For analytics send POST request to http://espressoprojector.com/api/		inmemory/analytics
+ 		You will get following response:
+
+							{
+                                "count": 3
+                             }
+		
  
- c) Approach 3: Using db webservices means url is firstly stored in database to specific id and then shorten service is called and again we store shorten url to get analytics:
-   c.1) To shorten the url , From your Postman For shorten send POST request to http://espressoprojector.com/api/db/shortenurl
-You will get following response:
+ c) Approach 3: Using db webservices means url is firstly stored in database to specific id and then shorten 					service is called and again we store shorten url to get analytics:
+   
+   	c.1) To shorten the url , From your Postman For shorten send POST request to http://espressoprojector.com/			 api/db/shortenurl
+		 You will get following response:
+
 							{
                                "url": "http://espressoprojector.com/api/db/g"
                              }
 							
-   c.2)To get analytics,From your Postman For analytics send POST request to http://espressoprojector.com/api/bd/analytics
- You will get following response:
- 							{
- 								   "count": 3
-							}
-  													
+   	c.2) To get analytics,From your Postman For analytics send POST request to http://espressoprojector.com/api/		 bd/analytics
+ 		 You will get following response:
+
+							{
+                                "count": 3
+                             }
+					
 ### 2) The service for task is  :
   
   ### To Run in Live environment
